@@ -824,6 +824,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cb222c2dc63c25409fbf542adeef6fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  direction: {x: 0, y: -1}
+  speed: 5
+  health: 1
+  shield: 0
+  inputUp: 119
+  inputDown: 115
+  inputLeft: 97
+  inputRight: 100
+  spriteRendererUp: {fileID: 0}
+  spriteRendererDown: {fileID: 0}
+  spriteRendererLeft: {fileID: 0}
+  spriteRendererRight: {fileID: 0}
+  spriteRendererDeath: {fileID: 0}
   players:
   - {fileID: 413588629}
   - {fileID: 1709355463}
