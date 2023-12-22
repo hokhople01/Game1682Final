@@ -31,7 +31,7 @@ public class ItemPickup : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other) // kiem tra xem doi tuong nhat item co phai player hay khong
     {
         if (other.CompareTag("Player") )
         {

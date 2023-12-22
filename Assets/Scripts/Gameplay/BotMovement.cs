@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BotMovement : MovementController
 {
@@ -8,7 +8,7 @@ public class BotMovement : MovementController
     public float timer = 2f;
     private float _cacheTimer;
 
-    private void Start()
+    private void Start()   // khoi tao bien va lay cac thanh phan can thiet tu movementcontroller
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<MovementController>();
         TryGetComponent(out botAttack);
@@ -18,7 +18,7 @@ public class BotMovement : MovementController
     public bool canMove = true;
     protected override void Update()
     {
-        direction = CheckDirection();
+        direction = CheckDirection();  // xac dinh huong di chuyen
         timer -= Time.deltaTime;
 
         if (!canMove)
@@ -26,7 +26,7 @@ public class BotMovement : MovementController
             direction = Vector2.zero;
         }
 
-        if (direction != Vector2.zero && timer <= 0 && Vector2.Distance((Vector2)this.transform.position, player.transform.position) <= botAttack.attackRange)
+        if (direction != Vector2.zero && timer <= 0 && Vector2.Distance((Vector2)this.transform.position, player.transform.position) <= botAttack.attackRange) // neu player trong khoang cach nhat dinh se tan cong
         {
             botAttack.DoAttack(player);
             timer = _cacheTimer;
@@ -35,10 +35,10 @@ public class BotMovement : MovementController
 
     protected override void FixedUpdate()
     {
-        Vector2 position = rigidbody.position;
+        Vector2 position = rigidbody.position; // xac dinh vi tri cua player
         Vector2 translation = direction * speed * Time.fixedDeltaTime;
 
-        rigidbody.MovePosition(position + translation);
+        rigidbody.MovePosition(position + translation); // di chuyen toi vi tri cua player
     }
 
     protected override void OnTriggerEnter2D(Collider2D other)
@@ -70,7 +70,7 @@ public class BotMovement : MovementController
 
     }
 
-    private Vector2 CheckDirection()
+    private Vector2 CheckDirection()  // xac dinh huong can di chuyen bang cach lay vector ngược tu bot toi player
     {
         Vector2 currentDirection = -(this.transform.position - player.transform.position);
         var dir = new Vector2();
@@ -82,7 +82,7 @@ public class BotMovement : MovementController
         }
         dir = Vector2.zero;
 
-        // etc.
+
         dir.x += -1;
             if (Vector2.Distance((Vector2)this.transform.position + dir, player.transform.position) <= checkDistance)
         {

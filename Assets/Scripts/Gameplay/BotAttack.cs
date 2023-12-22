@@ -25,19 +25,18 @@ public class BotAttack : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         movement = GameObject.FindGameObjectWithTag("Player").transform; // dat tag cho player
         TryGetComponent(out botMovement);
-        //InvokeRepeating("UpdateBot", 0f, 1f);// Theo doi va tan cong
     }
     private void Update()
     {
         //UpdateBot();
     }
 
-    public void DoAttack(MovementController target)
+    public void DoAttack(MovementController target) // tan cong player
     {
         StartCoroutine(DoAttackCo(target));
     }
 
-    private IEnumerator DoAttackCo(MovementController target)
+    private IEnumerator DoAttackCo(MovementController target) // hien thi spiterender tan cong theo huong cua player
     {   
         botMovement.canMove = false;
 
